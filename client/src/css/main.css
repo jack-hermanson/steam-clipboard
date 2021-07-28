@@ -3,4 +3,9 @@ body {
   color: #eee;
 }
 
+input {
+  width: 80%;
+  height: 2em;
+}
+
 /*# sourceMappingURL=main.css.map */
