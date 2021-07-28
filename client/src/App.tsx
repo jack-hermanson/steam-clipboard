@@ -6,25 +6,23 @@ function App() {
 
     const urlPrefix = "steam://openurl/";
 
-    const clipboardAction = useCallback(async () => {
-        const clipboardText = await navigator.clipboard.readText();
-        setInput(clipboardText);
-        const newText = `${urlPrefix}${clipboardText}`;
-        setOutput(newText);
-    }, [setOutput, urlPrefix]);
-
     useEffect(() => {
         if (output === "" && input === "") {
             console.log("ok");
-            clipboardAction().then(() => {
+            let clipboardText = "";
+            navigator.clipboard.readText().then(data => {
+                clipboardText = data;
+                setInput(clipboardText);
+                const newText = `${urlPrefix}${clipboardText}`;
+                setOutput(newText);
                 const outputElement = document.getElementById(
                     "output"
                 ) as HTMLInputElement;
                 outputElement.select();
-                document.execCommand("copy");
+                navigator.clipboard.writeText(newText).then();
             });
         }
-    }, [clipboardAction, output, input]);
+    }, [output, input]);
 
     return (
         <div
