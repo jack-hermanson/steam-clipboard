@@ -11,6 +11,7 @@
     "author": "Jack Hermanson <jack.hermanson@live.com>",
     "license": "MIT",
     "private": false,
+    "repository": "https://github.com/jack-hermanson/steam-clipboard.git",
     "devDependencies": {
         "kill-port": "^1.6.1",
         "prettier": "^2.3.2"
